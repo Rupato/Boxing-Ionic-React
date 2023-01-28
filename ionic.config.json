@@ -1,0 +1,7 @@
+{
+  "name": "boxing",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
