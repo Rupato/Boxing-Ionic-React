@@ -1,12 +1,13 @@
-import React from 'react'
+import React from "react";
+import { login, logout } from "../firebase/authentication";
+import { register } from "../serviceWorkerRegistration";
 
-  const defaultFormFields = {
-    first_name: "",
-    last_name: "",
-  };
+const defaultFormFields = {
+  first_name: "",
+  last_name: "",
+};
 
 const SignIn = () => {
-
   const [formFields, setFormFields] = React.useState(defaultFormFields);
 
   const { first_name, last_name } = formFields;
@@ -14,10 +15,13 @@ const SignIn = () => {
   const handleChange = (event: any) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
-  }
+  };
   const onSubmit = () => {
     console.log(formFields);
-  }
+    // register({ email: "test@test.com", password: "test123" });
+    login({ email: "test@test.com", password: "test123" });
+    // logout();
+  };
 
   return (
     <>
@@ -47,6 +51,6 @@ const SignIn = () => {
       </div>
     </>
   );
-}
+};
 
 export default SignIn;
