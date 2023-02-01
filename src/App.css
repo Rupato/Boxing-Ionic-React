@@ -20,6 +20,7 @@ section{
     transition: 0.5s;
 
 }
+
 header{
     position: absolute;
     top: 0;
@@ -35,7 +36,6 @@ header .logo{
     color: #ffffff;
     text-transform: uppercase;
     cursor: pointer;
-
 }
 header .toggle{
     position: relative;
@@ -73,6 +73,7 @@ section video{
     mix-blend-mode: overlay;
     z-index: 1;
 }
+
 .text{
     position: relative;
     z-index: 11;
@@ -111,7 +112,6 @@ section video{
     color: #111;
     letter-spacing: 2px;
 }
-
         
 .socialMediaIcons{
     position: absolute;
@@ -146,7 +146,6 @@ section video{
 .menu ul{
     position: relative;
 }
-
 .menu ul li{
     position: relative;
     list-style: none;
@@ -160,6 +159,7 @@ section video{
 .banner.active{
     right: 300px;
 }
+
 @media(max-width:991px){
     section header{
         padding: 40px;

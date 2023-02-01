@@ -1,52 +1,76 @@
-import React from 'react'
+import React from "react";
+import "./signIn.css";
+import SubmitButton from "../components/SubmitButton";
 
-  const defaultFormFields = {
-    first_name: "",
-    last_name: "",
-  };
+interface FormFields {
+  userName: string;
+  password: string;
+}
 
-const SignIn = () => {
+const defaultFormFields: FormFields = {
+  userName: "",
+  password: "",
+};
 
+const SignIn: React.FC = () => {
   const [formFields, setFormFields] = React.useState(defaultFormFields);
+  const [showPassword, setShowPassword] = React.useState(false);
 
-  const { first_name, last_name } = formFields;
+  const { userName, password } = formFields;
 
-  const handleChange = (event: any) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
-  }
-  const onSubmit = () => {
+  };
+
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     console.log(formFields);
-  }
+  };
+
+  const togglePassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   return (
-    <>
-      <div
-        style={{
-          position: "absolute",
-          zIndex: 100,
-        }}
-      >
-        <div>First Name</div>
+    <div className="container signIn-container">
+      <h1 className="title signIn-title">Have an account?</h1>
+      <h3 className="subtitle signIn-subTitle">
+        New to Name? <span><a href="#">Sign Up</a></span>
+      </h3>
+      <form className="form signIn-form" onSubmit={onSubmit}>
         <input
+          className="form__input"
           type="text"
           required
-          onChange={(e) => handleChange(e)}
-          name="first_name"
-          value={first_name}
+          onChange={handleChange}
+          name="userName"
+          value={userName}
+          placeholder="Username"
         />
-        <div>Last Name</div>
-        <input
-          type="text"
-          required
-          onChange={(e) => handleChange(e)}
-          name="last_name"
-          value={last_name}
-        />
-        <button onClick={onSubmit}>Submit</button>
-      </div>
-    </>
+        <div className="form__group">
+          <input
+            className="form__password"
+            type={showPassword ? "text" : "password"}
+            required
+            onChange={handleChange}
+            name="password"
+            value={password}
+            placeholder="Password"
+          />
+          <span className="form__icon">
+            <button type="button" onClick={togglePassword}>
+              &#9757;
+            </button>
+          </span>
+        </div>
+        <SubmitButton text="SIGN IN" />
+        <div className="form__forgot-password">
+          <a>Forgot your password?</a>
+        </div>
+      </form>
+    </div>
   );
-}
+};
 
 export default SignIn;
