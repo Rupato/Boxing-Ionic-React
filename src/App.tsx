@@ -6,6 +6,8 @@ import "./App.css";
 
 /* Theme variables */
 import "./theme/variables.css";
+import PasswordReset from "./pages/passwordReset";
+import SignUp from "./pages/signUp";
 
 setupIonicReact();
 
@@ -15,7 +17,9 @@ const App: React.FC = () => (
       <div className="overlay"></div>
       <Header />
       <Video />
-      <SignIn />
+      {/* <SignIn /> */}
+      {/* <PasswordReset /> */}
+      <SignUp />
     </section>
   </IonApp>
 );
